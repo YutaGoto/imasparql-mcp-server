@@ -1,0 +1,15 @@
+{
+  "id": "imasparql-mcp",
+  "name": "IMASparql MCP Server",
+  "description": "アイドルマスターSPARQLデータをMCP APIとして提供します。",
+  "endpoint": "http://localhost:3000/mcp",
+  "methods": [
+    "search_entities",
+    "get_entity",
+    "get_entity_details",
+    "get_entity_relations",
+    "get_unit_members",
+    "get_unit_members_by_name"
+  ],
+  "schema": "https://modelcontext.org/schema/v1"
+}
