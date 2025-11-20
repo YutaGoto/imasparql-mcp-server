@@ -1,0 +1,27 @@
+{
+  "name": "imasparql-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP adapter for imasparql",
+  "main": "imas-mcp.js",
+  "type": "module",
+  "scripts": {
+    "start": "node imas-mcp.js",
+    "dev": "NODE_ENV=development nodemon imas-mcp.js",
+    "mcp": "node mcp-stdio.js",
+    "lint": "biome check && biome lint",
+    "format": "biome format --write && biome check --write"
+  },
+  "bin": {
+    "imasparql-mcp": "./mcp-stdio.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.4",
+    "nodemon": "^3.1.0"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.0"
+}
