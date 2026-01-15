@@ -9,8 +9,10 @@ import {
   getEntity,
   getEntityDetails,
   getEntityRelations,
+  getIdolClothes,
   getUnitMembers,
   getUnitMembersByName,
+  searchClothes,
   searchEntities,
 } from "./lib/queries.js";
 
@@ -158,6 +160,43 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           required: ["name"],
         },
       },
+      {
+        name: "search_clothes",
+        description: "アイドルマスターの衣装を検索します。",
+        inputSchema: {
+          type: "object",
+          properties: {
+            q: {
+              type: "string",
+              description: "検索キーワード（衣装名、説明など）",
+            },
+            limit: {
+              type: "number",
+              description: "取得件数の上限（デフォルト: 50）",
+              default: 50,
+            },
+            offset: {
+              type: "number",
+              description: "オフセット（デフォルト: 0）",
+              default: 0,
+            },
+          },
+        },
+      },
+      {
+        name: "get_idol_clothes",
+        description: "指定されたアイドルの衣装一覧を取得します。",
+        inputSchema: {
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              description: "アイドルのURI",
+            },
+          },
+          required: ["id"],
+        },
+      },
     ],
   };
 });
@@ -230,6 +269,28 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
       case "get_unit_members_by_name": {
         const result = await getUnitMembersByName(args);
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(result, null, 2),
+            },
+          ],
+        };
+      }
+      case "search_clothes": {
+        const result = await searchClothes(args);
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify(result, null, 2),
+            },
+          ],
+        };
+      }
+      case "get_idol_clothes": {
+        const result = await getIdolClothes(args);
         return {
           content: [
             {
