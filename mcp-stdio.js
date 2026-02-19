@@ -85,6 +85,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               description: "オフセット（デフォルト: 0）",
               default: 0,
             },
+            birthMonth: {
+              type: "number",
+              description: "誕生月（1-12）",
+            },
+            birthDay: {
+              type: "number",
+              description: "誕生日（1-31）",
+            },
           },
         },
       },
