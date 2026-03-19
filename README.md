@@ -60,6 +60,7 @@ pnpm install -g .
     - `sortBy`: ソート項目 (`name`, `height`, `weight`, `birthDate`)
     - `sortOrder`: ソート順 (`asc`, `desc`)
     - ※ imasparqlには誕生日の「年」の情報がないため、日付指定は `MM-DD` 形式で行います。
+    - ※ `birthDateFrom` または `birthDateTo` が指定された場合は期間検索が優先され、`birthMonth` / `birthDay` 指定は無視されます。
     - ※ `birthDateFrom` と `birthDateTo` を組み合わせて「来週が誕生日のアイドル」といった期間検索が可能です（年を跨ぐ指定にも対応しています）。
 - `get_entity`: 基本情報取得
 - `get_entity_details`: 詳細情報取得

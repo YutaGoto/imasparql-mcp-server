@@ -88,10 +88,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             birthMonth: {
               type: "number",
               description: "誕生月（1-12）",
+              minimum: 1,
+              maximum: 12,
             },
             birthDay: {
               type: "number",
               description: "誕生日（1-31）",
+              minimum: 1,
+              maximum: 31,
             },
             birthDateFrom: {
               type: "string",
