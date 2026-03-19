@@ -93,6 +93,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               type: "number",
               description: "誕生日（1-31）",
             },
+            birthDateFrom: {
+              type: "string",
+              description: "開始日（MM-DD形式、例: 02-19）",
+            },
+            birthDateTo: {
+              type: "string",
+              description: "終了日（MM-DD形式、例: 02-28）",
+            },
           },
         },
       },
