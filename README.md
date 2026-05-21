@@ -48,12 +48,27 @@ pnpm install -g .
 
 #### 利用可能なツール
 
-- `search_entities`: キャラクター検索（名前、ブランド、身長、体重などで絞り込み可能）
+- `search_entities`: キャラクター検索（名前、ブランド、身長、体重、誕生日などで絞り込み可能）
+    - `q`: 検索キーワード
+    - `brand`: ブランド名（例: `765AS`, `CinderellaGirls`）
+    - `minHeight` / `maxHeight`: 身長範囲 (cm)
+    - `minWeight` / `maxWeight`: 体重範囲 (kg)
+    - `birthMonth`: 誕生月 (1-12)
+    - `birthDay`: 誕生日 (1-31)
+    - `birthDateFrom`: 開始日 (`MM-DD` 形式、例: `02-19`)
+    - `birthDateTo`: 終了日 (`MM-DD` 形式、例: `02-28`)
+    - `sortBy`: ソート項目 (`name`, `height`, `weight`, `birthDate`)
+    - `sortOrder`: ソート順 (`asc`, `desc`)
+    - ※ imasparqlには誕生日の「年」の情報がないため、日付指定は `MM-DD` 形式で行います。
+    - ※ `birthDateFrom` または `birthDateTo` が指定された場合は期間検索が優先され、`birthMonth` / `birthDay` 指定は無視されます。
+    - ※ `birthDateFrom` と `birthDateTo` を組み合わせて「来週が誕生日のアイドル」といった期間検索が可能です（年を跨ぐ指定にも対応しています）。
 - `get_entity`: 基本情報取得
 - `get_entity_details`: 詳細情報取得
 - `get_entity_relations`: 関連情報（所属ユニットなど）取得
 - `get_unit_members`: ユニットに所属するメンバー（アイドル）を取得
 - `get_unit_members_by_name`: ユニット名から所属メンバーを取得
+- `search_clothes`: 衣装検索
+- `get_idol_clothes`: 特定のアイドルの衣装一覧取得
 
 ### 2. HTTPサーバーとして利用
 
